@@ -6,7 +6,7 @@ const locationSchema = new mongoose.Schema({
   adress: String,
   longitude: String,
   latitutde: String,
-  hives: Arr,
+  hives: Array,
   comment: String,
 });
 

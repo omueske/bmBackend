@@ -33,8 +33,8 @@ const mongoose = require("mongoose");
 // Connect to DB
 mongoose
   .connect("mongodb://localhost/bmanager")
-  .then(() => console.log("MongoDB connected..."))
-  .catch((err) => console.log(err));
+  .then(() => fastify.log.info("MongoDB connected..."))
+  .catch((err) => fastify.log.fatal(err));
 
 const routes = require("./routes");
 
