@@ -1,102 +1,104 @@
 // External Dependencies
-const boom = require("boom");
+const boom = require('boom')
 
 // Get Data Models
-const Location = require("../models/Location");
+const Location = require('../models/Location')
 
 // Get all Locations
 exports.getLocations = async (req, reply) => {
   try {
-    const locations = await Location.find();
-    return locations;
+    const locations = await Location.find()
+    return locations
   } catch (err) {
-    throw boom.boomify(err);
+    throw boom.boomify(err)
   }
-};
+}
 
 // Get Single Location by ID
 exports.getSingleLocation = async (req, reply) => {
   try {
-    const id = req.params.id;
-    const location = await Location.findById(id);
-    return location;
+    const id = req.params.id
+    const location = await Location.findById(id)
+    return location
   } catch (err) {
-    throw boom.boomify(err);
+    throw boom.boomify(err)
   }
-};
+}
 
 // Add a new Location
 exports.addLocation = async (req, reply) => {
   try {
-    const location = new Location(req.body);
-    return location.save();
+    const location = new Location(req.body)
+    reply.status(201)
+    return location.save()
   } catch (err) {
-    throw boom.boomify(err);
+    throw boom.boomify(err)
   }
-};
+}
 
 // Update an existing Location
 exports.updateLocation = async (req, reply) => {
   try {
-    const id = req.params.id;
-    const location = req.body;
-    const { ...updateData } = location;
+    const id = req.params.id
+    const location = req.body
+    const { ...updateData } = location
     const update = await Location.findByIdAndUpdate(id, updateData, {
-      new: true,
-    });
-    return update;
+      new: true
+    })
+    return update
   } catch (err) {
-    throw boom.boomify(err);
+    throw boom.boomify(err)
   }
-};
+}
 
 // Delete an Location
 exports.deleteLocation = async (req, reply) => {
   try {
-    const id = req.params.id;
-    const location = await Location.findByIdAndRemove(id);
-    return location;
+    const id = req.params.id
+    const location = await Location.findByIdAndRemove(id)
+    return location
   } catch (err) {
-    throw boom.boomify(err);
+    throw boom.boomify(err)
   }
-};
+}
 
 // Link Hive to Location
 exports.linkBeeHiveToLocation = async (req, reply) => {
   try {
-    const id = req.params.id;
+    const id = req.params.id
 
     updateData = JSON.parse(`{"href": "/api/beeHives/${req.params.beeHiveID}", 
-      "beeHiveID": "${req.params.beeHiveID}" }`);
+      "beeHiveID": "${req.params.beeHiveID}" }`)
 
     const update = await Location.updateOne(
       { _id: id },
       { $push: { hives: updateData } },
       { new: true }
-    );
+    )
 
     // Get the new saved location-state und return it
-    const currentLocation = (hive = Location.findById(id));
-    return currentLocation;
+    const currentLocation = (hive = Location.findById(id))
+    reply.status(201)
+    return currentLocation
   } catch (err) {
-    throw boom.boomify(err);
+    throw boom.boomify(err)
   }
-};
+}
 
 exports.unlinkBeeHiveFromLocation = async (req, reply) => {
   try {
-    const id = req.params.id;
-    const beeHiveID = req.params.beeHiveID;
+    const id = req.params.id
+    const beeHiveID = req.params.beeHiveID
     const update = await Location.findByIdAndUpdate(
       id,
       { $pull: { hives: { beeHiveID: beeHiveID } } },
       { new: true }
-    );
+    )
 
     // Get the new saved location-state und return it
-    const currentLocation = (hive = Location.findById(id));
-    return currentLocation;
+    const currentLocation = (hive = Location.findById(id))
+    return currentLocation
   } catch (err) {
-    throw boom.boomify(err);
+    throw boom.boomify(err)
   }
-};
+}
