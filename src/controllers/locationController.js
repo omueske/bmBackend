@@ -60,3 +60,43 @@ exports.deleteLocation = async (req, reply) => {
     throw boom.boomify(err);
   }
 };
+
+// Link Hive to Location
+exports.linkBeeHiveToLocation = async (req, reply) => {
+  try {
+    const id = req.params.id;
+
+    updateData = JSON.parse(`{"href": "/api/beeHives/${req.params.beeHiveID}", 
+      "beeHiveID": "${req.params.beeHiveID}" }`);
+
+    const update = await Location.updateOne(
+      { _id: id },
+      { $push: { hives: updateData } },
+      { new: true }
+    );
+
+    // Get the new saved location-state und return it
+    const currentLocation = (hive = Location.findById(id));
+    return currentLocation;
+  } catch (err) {
+    throw boom.boomify(err);
+  }
+};
+
+exports.unlinkBeeHiveFromLocation = async (req, reply) => {
+  try {
+    const id = req.params.id;
+    const beeHiveID = req.params.beeHiveID;
+    const update = await Location.findByIdAndUpdate(
+      id,
+      { $pull: { hives: { beeHiveID: beeHiveID } } },
+      { new: true }
+    );
+
+    // Get the new saved location-state und return it
+    const currentLocation = (hive = Location.findById(id));
+    return currentLocation;
+  } catch (err) {
+    throw boom.boomify(err);
+  }
+};

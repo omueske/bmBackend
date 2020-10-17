@@ -3,6 +3,7 @@ const boom = require("boom");
 
 // Get Data Models
 const BeeHive = require("../models/BeeHive");
+console.log(BeeHive);
 
 // Get all BeeHives
 exports.getBeeHives = async (req, reply) => {

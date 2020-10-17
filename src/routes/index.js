@@ -1,7 +1,7 @@
 // Import controllers
 const locationController = require("../controllers/locationController");
 const beeHiveController = require("../controllers/beeHiveController");
-const documentation = require("../models/Location.js");
+const documentation = require("../models/Location");
 console.log(documentation.Model);
 
 const routes = [
@@ -29,6 +29,21 @@ const routes = [
   {
     method: "PUT",
     url: "/api/locations/:id",
+    handler: locationController.updateLocation,
+  },
+  {
+    method: "PUT",
+    url: "/api/locations/:id/link/:beeHiveID",
+    handler: locationController.linkBeeHiveToLocation,
+  },
+  {
+    method: "PUT",
+    url: "/api/locations/:id/unlink/:beeHiveID",
+    handler: locationController.unlinkBeeHiveFromLocation,
+  },
+  {
+    method: "DELETE",
+    url: "/api/locations/:id",
     handler: locationController.deleteLocation,
   },
 
@@ -55,6 +70,11 @@ const routes = [
   },
   {
     method: "PUT",
+    url: "/api/beeHives/:id",
+    handler: beeHiveController.updateBeeHive,
+  },
+  {
+    method: "DELETE",
     url: "/api/beeHives/:id",
     handler: beeHiveController.deleteBeeHive,
   },
