@@ -1,9 +1,9 @@
 // External Dependencies
-const mongoose = require("mongoose");
+const mongoose = require('mongoose')
 
 const beeHiveSchema = new mongoose.Schema(
   {
-    number: Number,
+    number: String,
     name: String,
     buildType: String,
     queen: Array,
@@ -11,9 +11,9 @@ const beeHiveSchema = new mongoose.Schema(
     hiveLog: Array,
     todos: Array,
     comment: String,
-    status: String,
+    status: String
   },
   { timestamps: true }
-);
+)
 
-module.exports = mongoose.model("BeeHive", beeHiveSchema);
+module.exports = mongoose.model('BeeHive', beeHiveSchema)
