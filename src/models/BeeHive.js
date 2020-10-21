@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 
 const beeHiveSchema = new mongoose.Schema(
   {
+    locationId: String,
     number: String,
     name: String,
     buildType: String,
