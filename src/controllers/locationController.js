@@ -3,6 +3,7 @@ const boom = require('boom')
 
 // Get Data Models
 const Location = require('../models/Location')
+const BeeHive = require('../models/BeeHive')
 
 // Get all Locations
 exports.getLocations = async (req, reply) => {
@@ -55,7 +56,21 @@ exports.updateLocation = async (req, reply) => {
 exports.deleteLocation = async (req, reply) => {
   try {
     const id = req.params.id
-    const location = await Location.findByIdAndRemove(id)
+    // const location = await Location.findByIdAndRemove(id)
+    const location = await Location.findById(id)
+    for (hive of location.hives) {
+      const req = {}
+      req.params = {}
+      console.log(
+        '------------------------------------------------> ' + hive._id
+      )
+      req.params.beeHiveID = hive._id
+      req.params.id = location._id
+      console.log(req)
+      const toDelte = await this.unlinkBeeHiveFromLocation(req, '')
+      console.log(toDelte)
+    }
+
     return location
   } catch (err) {
     throw boom.boomify(err)
@@ -89,7 +104,14 @@ exports.unlinkBeeHiveFromLocation = async (req, reply) => {
   try {
     const id = req.params.id
     const beeHiveID = req.params.beeHiveID
-    const update = await Location.findByIdAndUpdate(
+    console.log(req)
+
+    const updateBeeHive = await BeeHive.findByIdAndUpdate(
+      { _id: beeHiveID },
+      { locationId: null }
+    )
+
+    const updateLocation = await Location.findByIdAndUpdate(
       id,
       { $pull: { hives: { beeHiveID: beeHiveID } } },
       { new: true }
