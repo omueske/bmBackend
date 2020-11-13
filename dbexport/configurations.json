@@ -1,0 +1,59 @@
+[{
+  "_id": {
+    "$oid": "5faec60de4825196f2161c83"
+  },
+  "name": "default",
+  "hives": {
+    "buildTypes": [
+      {
+        "name": "Zander",
+        "variant": [
+          "normal",
+          "1,5",
+          "2/3",
+          "flach"
+        ]
+      },
+      {
+        "name": "Zadant",
+        "variants": [
+          "normal"
+        ]
+      },
+      {
+        "name": "Dadant",
+        "variants": [
+          "US",
+          "Blatt"
+        ]
+      },
+      {
+        "name": "Langstroth",
+        "variants": [
+          "normal",
+          "2/3"
+        ]
+      },
+      {
+        "name": "Deutsch normal",
+        "variants": [
+          "normal"
+        ]
+      }
+    ],
+    "statuses": [
+      {
+        "type": "active",
+        "comment": "Beute ist momentan in Benutzung"
+      },
+      {
+        "type": "inactive",
+        "comment": "Beute ist momentan nicht in Benutzung"
+      },
+      {
+        "type": "dead",
+        "comment": "Volk verstorben"
+      }
+    ]
+  }
+}]

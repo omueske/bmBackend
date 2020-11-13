@@ -56,21 +56,18 @@ exports.updateLocation = async (req, reply) => {
 exports.deleteLocation = async (req, reply) => {
   try {
     const id = req.params.id
-    // const location = await Location.findByIdAndRemove(id)
-    const location = await Location.findById(id)
+    let location = await Location.findById(id)
     for (hive of location.hives) {
       const req = {}
       req.params = {}
-      console.log(
-        '------------------------------------------------> ' + hive._id
-      )
+
       req.params.beeHiveID = hive._id
       req.params.id = location._id
       console.log(req)
       const toDelte = await this.unlinkBeeHiveFromLocation(req, '')
       console.log(toDelte)
     }
-
+    location = await Location.findByIdAndRemove(id)
     return location
   } catch (err) {
     throw boom.boomify(err)
