@@ -101,13 +101,22 @@ exports.getSingleBeeHiveLog = async (req, reply) => {
 // Add a new BeeHive
 exports.addBeeHiveLog = async (req, reply) => {
   try {
+    req.body.hiveId = req.params.id
     const beeHiveLog = new BeeHiveLog(req.body)
     reply.status(201)
-    // Todo: update BeeHive with link
     return beeHiveLog.save()
   } catch (err) {
     throw boom.boomify(err)
   }
 }
 
-// ToDo: Add delete Hivelog!!!!!
+// Delete an BeeHive-Log
+exports.deleteBeeHiveLog = async (req, reply) => {
+  try {
+    const id = req.params.id
+    const beeHiveLog = await BeeHiveLog.findByIdAndRemove(id)
+    return beeHiveLog
+  } catch (err) {
+    throw boom.boomify(err)
+  }
+}

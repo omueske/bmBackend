@@ -2,8 +2,8 @@
 const configurationController = require('../controllers/configurationController')
 const locationController = require('../controllers/locationController')
 const beeHiveController = require('../controllers/beeHiveController')
-const documentation = require('../models/Location')
-console.log(documentation.Model)
+// const documentation = require('../models/Location')
+// console.log(documentation.Model)
 
 const routes = [
   /*
@@ -113,6 +113,11 @@ const routes = [
     method: 'POST',
     url: '/api/beeHives/:id/logs',
     handler: beeHiveController.addBeeHiveLog
+  },
+  {
+    method: 'DELETE',
+    url: '/api/beeHives/logs/:id',
+    handler: beeHiveController.deleteBeeHiveLog
   }
 ]
 
