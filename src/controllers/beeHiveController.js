@@ -109,3 +109,5 @@ exports.addBeeHiveLog = async (req, reply) => {
     throw boom.boomify(err)
   }
 }
+
+// ToDo: Add delete Hivelog!!!!!
