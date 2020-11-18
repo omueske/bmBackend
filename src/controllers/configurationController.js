@@ -3,7 +3,6 @@ const boom = require('boom')
 
 // Get Data Models
 const Configuration = require('../models/Configuration')
-console.log(Configuration.collection)
 
 // Get all Configurations
 exports.getConfigurations = async (req, reply) => {

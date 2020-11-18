@@ -63,9 +63,7 @@ exports.deleteLocation = async (req, reply) => {
 
       req.params.beeHiveID = hive._id
       req.params.id = location._id
-      console.log(req)
       const toDelte = await this.unlinkBeeHiveFromLocation(req, '')
-      console.log(toDelte)
     }
     location = await Location.findByIdAndRemove(id)
     return location
@@ -101,7 +99,6 @@ exports.unlinkBeeHiveFromLocation = async (req, reply) => {
   try {
     const id = req.params.id
     const beeHiveID = req.params.beeHiveID
-    console.log(req)
 
     const updateBeeHive = await BeeHive.findByIdAndUpdate(
       { _id: beeHiveID },

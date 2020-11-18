@@ -93,6 +93,26 @@ const routes = [
     method: 'DELETE',
     url: '/api/beeHives/:id',
     handler: beeHiveController.deleteBeeHive
+  },
+  {
+    method: 'GET',
+    url: '/api/beeHives/logs',
+    handler: beeHiveController.getAllBeeHiveLogs
+  },
+  {
+    method: 'GET',
+    url: '/api/beeHives/:id/logs',
+    handler: beeHiveController.getBeeHiveLogs
+  },
+  {
+    method: 'GET',
+    url: '/api/beeHives/logs/:id',
+    handler: beeHiveController.getSingleBeeHiveLog
+  },
+  {
+    method: 'POST',
+    url: '/api/beeHives/:id/logs',
+    handler: beeHiveController.addBeeHiveLog
   }
 ]
 
