@@ -44,16 +44,63 @@
     "statuses": [
       {
         "type": "active",
+        "name": "Aktiv",
         "comment": "Beute ist momentan in Benutzung"
       },
       {
         "type": "inactive",
+        "name": "Inaktiv",
         "comment": "Beute ist momentan nicht in Benutzung"
       },
       {
         "type": "dead",
+        "name": "Verstorben",
         "comment": "Volk verstorben"
       }
     ]
-  }
+  },
+  "meakness": [
+    {
+      "value": 1,
+      "text": "Aggressiv"
+    },
+    {
+      "value": 2,
+      "text": "Stark stechfreudig (5-8 Stiche nicht provoziert)"
+    },
+    {
+      "value": 3,
+      "text": "stechfreudig (1-4 Stiche nicht provoziert)"
+    },
+    {
+      "value": 4,
+      "text": "stechen nicht (bei Verwendung von Rauch)"
+    },
+    {
+      "value": 5,
+      "text": "stechen nicht (können ohne Rauch bearbeitet werden)"
+    }
+  ],
+  "steadily": [
+    {
+      "value": 1,
+      "text": "Sehr unruhig (Viele Bienen in der Luft)"
+    },
+    {
+      "value": 2,
+      "text": "Nervös (Die Bienen laufen auf den Waben. Viele Bienen fliegen einfach auf)"
+    },
+    {
+      "value": 3,
+      "text": "Unruhig (Die Bienen laufen auf den Waben und fliegen vereinzelt auf"
+    },
+    {
+      "value": 4,
+      "text": "Ruhig (Die Bienen sind etwas unruhig auf den Waben, fliegen aber nicht auf)"
+    },
+    {
+      "value": 5,
+      "text": "Sehr ruhig (Die Bienen verhalten sich ruhig, fliegen auch beim Abschlagen schlagen nicht auf)"
+    }
+  ]
 }]
