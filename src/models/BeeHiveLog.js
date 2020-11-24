@@ -9,7 +9,8 @@ const beeHiveLogSchema = new mongoose.Schema(
     food: Object,
     date: Date,
     meekness: Number,
-    comment: String,
+    steadily: Number,
+    annotations: String,
     meteorology: Object
   },
   { timestamps: true }
