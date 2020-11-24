@@ -80,7 +80,7 @@ exports.getAllBeeHiveLogs = async (req, reply) => {
 exports.getBeeHiveLogs = async (req, reply) => {
   try {
     const id = req.params.id
-    const beeHiveLogs = await BeeHiveLog.find({ hiveId: id })
+    const beeHiveLogs = await BeeHiveLog.find({ beeHiveId: id })
     return beeHiveLogs
   } catch (err) {
     throw boom.boomify(err)
