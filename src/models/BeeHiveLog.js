@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 
 const beeHiveLogSchema = new mongoose.Schema(
   {
-    hiveId: String,
+    beeHiveId: String,
     findings: Object,
     frames: Object,
     food: Object,
