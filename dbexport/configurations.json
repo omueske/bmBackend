@@ -102,5 +102,23 @@
       "value": 5,
       "text": "Sehr ruhig (Die Bienen verhalten sich ruhig, fliegen auch beim Abschlagen schlagen nicht auf)"
     }
+  ],
+  "weather": [
+    {
+      "value": "sunny",
+      "text": "sonnig"
+    },
+    {
+      "value": "cloudy",
+      "text": "wolkig"
+    },
+    {
+      "value": "rainy",
+      "text": "regnerisch"
+    },
+    {
+      "value": "heavy-rain",
+      "text": "Starkregen"
+    }
   ]
 }]
