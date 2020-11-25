@@ -122,7 +122,7 @@ exports.deleteBeeHiveLog = async (req, reply) => {
 }
 
 // Update an BeeHiveLog
-exports.updateBeeHive = async (req, reply) => {
+exports.updateBeeHiveLog = async (req, reply) => {
   try {
     const id = req.params.id
     const beeHiveLog = req.body

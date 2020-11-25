@@ -118,6 +118,11 @@ const routes = [
     method: 'DELETE',
     url: '/api/beeHives/logs/:id',
     handler: beeHiveController.deleteBeeHiveLog
+  },
+  {
+    method: 'PUT',
+    url: '/api/beeHives/logs/:id',
+    handler: beeHiveController.updateBeeHiveLog
   }
 ]
 
