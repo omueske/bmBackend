@@ -21,7 +21,8 @@ exports.options = {
         description: 'Frontend related Configuration end-points'
       },
       { name: 'beeHives', description: 'BeeHives related end-points' },
-      { name: 'locations', description: 'Locations related end-points' }
+      { name: 'locations', description: 'Locations related end-points' },
+      { name: 'queens', description: 'Queens related end-points' }
     ]
   }
 }

@@ -2,6 +2,7 @@
 const configurationController = require('../controllers/configurationController')
 const locationController = require('../controllers/locationController')
 const beeHiveController = require('../controllers/beeHiveController')
+const queenController = require('../controllers/queenController')
 // const documentation = require('../models/Location')
 // console.log(documentation.Model)
 
@@ -181,6 +182,49 @@ const routes = [
       tags: ['beeHives']
     },
     handler: beeHiveController.updateBeeHiveLog
+  },
+  // =================================================================
+  //   Queens Routes
+  // =================================================================
+  {
+    method: 'GET',
+    url: '/api/queens',
+    schema: {
+      tags: ['queens']
+    },
+    handler: queenController.getQueens
+  },
+  {
+    method: 'GET',
+    url: '/api/queens/:id',
+    schema: {
+      tags: ['queens']
+    },
+    handler: queenController.getSingleQueen
+  },
+  {
+    method: 'POST',
+    url: '/api/queens',
+    schema: {
+      tags: ['queens']
+    },
+    handler: queenController.addQueen
+  },
+  {
+    method: 'PUT',
+    url: '/api/queens/:id',
+    schema: {
+      tags: ['queens']
+    },
+    handler: queenController.updateQueen
+  },
+  {
+    method: 'DELETE',
+    url: '/api/queens/:id',
+    schema: {
+      tags: ['queens']
+    },
+    handler: queenController.deleteQueen
   }
 ]
 
