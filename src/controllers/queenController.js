@@ -1,3 +1,4 @@
+const log = require('pino')({ level: 'debug' })
 // External Dependencies
 const boom = require('boom')
 
@@ -29,6 +30,7 @@ exports.getSingleQueen = async (req, reply) => {
 exports.addQueen = async (req, reply) => {
   try {
     const queen = new Queen(req.body)
+    log.debug(req.body)
     reply.status(201)
     return queen.save()
   } catch (err) {
